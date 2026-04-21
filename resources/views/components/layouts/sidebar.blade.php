@@ -1,4 +1,58 @@
-<aside class="">
+<aside class="w-full h-screen bg-[#273142] text-white flex flex-col">
 
+  <div class="h-[68px] flex items-center px-6">
+    <i class="fa-solid fa-book-open text-[#4880FF] text-2xl mr-3"></i>
+    <h1 class="text-xl font-bold tracking-wide">Ramz<span class="text-[#4880FF]">Library</span></h1>
+  </div>
+
+  <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1">
+
+    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Menu Utama</p>
+
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 bg-[#1B2431] text-white rounded-lg group transition-colors duration-200">
+      <i class="fa-solid fa-house text-[#4880FF] w-5 text-center"></i>
+      <span class="font-medium">Dashboard</span>
+    </a>
+
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-300 hover:bg-[#1B2431] hover:text-white rounded-lg transition-colors duration-200 group">
+      <i class="fa-solid fa-book w-5 text-center group-hover:text-[#4880FF] transition-colors"></i>
+      <span class="font-medium">Catalogue</span>
+    </a>
+
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-300 hover:bg-[#1B2431] hover:text-white rounded-lg transition-colors duration-200 group">
+      <i class="fa-solid fa-layer-group w-5 text-center group-hover:text-[#4880FF] transition-colors"></i>
+      <span class="font-medium">Categories & Shelves</span>
+    </a>
+
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-300 hover:bg-[#1B2431] hover:text-white rounded-lg transition-colors duration-200 group">
+      <i class="fa-solid fa-users w-5 text-center group-hover:text-[#4880FF] transition-colors"></i>
+      <span class="font-medium">Data Anggota</span>
+    </a>
+
+    <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mt-6 mb-2">Transaksi</p>
+
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-300 hover:bg-[#1B2431] hover:text-white rounded-lg transition-colors duration-200 group">
+      <i class="fa-solid fa-book-open-reader w-5 text-center group-hover:text-[#4880FF] transition-colors"></i>
+      <span class="font-medium">Peminjaman</span>
+    </a>
+
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-300 hover:bg-[#1B2431] hover:text-white rounded-lg transition-colors duration-200 group">
+      <i class="fa-solid fa-rotate-left w-5 text-center group-hover:text-[#4880FF] transition-colors"></i>
+      <span class="font-medium">Pengembalian</span>
+    </a>
+
+  </nav>
+
+  <div class="p-4 border-t border-[#1B2431] space-y-1">
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-300 hover:bg-[#1B2431] hover:text-white rounded-lg transition-colors duration-200 group">
+      <i class="fa-solid fa-gear w-5 text-center group-hover:text-white transition-colors"></i>
+      <span class="font-medium">Pengaturan</span>
+    </a>
+
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-red-400 hover:bg-red-500/10 hover:text-red-500 rounded-lg transition-colors duration-200 group">
+      <i class="fa-solid fa-right-from-bracket w-5 text-center"></i>
+      <span class="font-medium">Keluar</span>
+    </a>
+  </div>
 
 </aside>
