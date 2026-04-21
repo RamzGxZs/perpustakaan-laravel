@@ -1,19 +1,29 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 
 // auth route
 
 // login route
-Route::get('/auth/login', function () {
-    return view('auth.login.index');
-});
+Route::prefix('auth')->group(function() {
+    Route::get('/login', function () {
+        return view('auth.login.index');
+    })->name('login');
 
+    Route::post('/login', [AuthController::class, 'authenticate']);
+
+    Route::get('/register', function() {
+        return view('auth.register.index');
+    })->name('register');
+
+    Route::post('/register', [AuthController::class, 'store'])->name('register');
+});
 
 // register route
 Route::get('/auth/register', function () {
-    return view('auth.register.index');
+	return view('auth.register.index');
 });
 
 
@@ -23,7 +33,5 @@ Route::get('/auth/register', function () {
 
 // views route
 Route::get('/', function () {
-    return view('index');
-});
-
-
+	return view('index');
+})->name('dashboard');

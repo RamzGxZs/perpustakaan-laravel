@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <x-sidebar />
+  <x-layouts.sidebar />
   <main class="">
     {{ $slot }}
   </main>
