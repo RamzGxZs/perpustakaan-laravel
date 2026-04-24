@@ -18,8 +18,8 @@
         alt="Indah Jumaiah avatar" class="w-9 h-9 object-cover object-center rounded-full border border-gray-500">
       <div class="flex items-center gap-1">
         <div class="flex flex-col leading-tight">
-          <span class="text-sm font-bold">Indah Jumaiah</span>
-          <span class="text-xs text-gray-400">User</span>
+          <span class="text-sm font-bold">{{ auth()->user()->email }}</span>
+          <span class="text-xs text-gray-400"> {{ auth()->user()->role }} </span>
         </div>
         {{-- <i class="fa-solid fa-caret-down"></i> --}}
       </div>

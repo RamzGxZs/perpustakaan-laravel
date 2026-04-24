@@ -7,31 +7,33 @@ use Illuminate\Support\Facades\Route;
 // auth route
 
 // login route
-Route::prefix('auth')->group(function() {
-    Route::get('/login', function () {
-        return view('auth.login.index');
-    })->name('login');
+Route::prefix('auth')->middleware('guest')->group(function () {
 
-    Route::post('/login', [AuthController::class, 'authenticate']);
+	Route::get('/login', function () {
+		return view('auth.login.index');
+	})->name('login');
 
-    Route::get('/register', function() {
-        return view('auth.register.index');
-    })->name('register');
+	Route::post('/login', [AuthController::class, 'authenticate']);
 
-    Route::post('/register', [AuthController::class, 'store'])->name('register');
+	Route::get('/register', function () {
+		return view('auth.register.index');
+	})->name('register');
+
+	Route::post('/register', [AuthController::class, 'store'])->name('register');
 });
-
-// register route
-Route::get('/auth/register', function () {
-	return view('auth.register.index');
-});
-
-
-
-
 
 
 // views route
+Route::middleware(['auth'])->group(function () {
+
+	Route::get('/dashboard', function () {
+		return view('dashboard');
+	})->name('dashboard');
+
+	Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+
 Route::get('/', function () {
 	return view('index');
-})->name('dashboard');
+})->name('index');
