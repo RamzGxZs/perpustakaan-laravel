@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
+use App\Models\Book;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
 
+use function Symfony\Component\Clock\now;
 
 // auth route
 
@@ -34,6 +38,18 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
+Route::get('/books', [BookController::class, 'index']);
+
+Route::get('/about', function () {
+	return view('about');
+})->name('about');
+
 Route::get('/', function () {
-	return view('index');
+	$trendingBooks = Book::query()
+		->where('created_at', '>=', Carbon::now()->subWeek())
+		->orderBy('book_readed', 'desc')
+		->take(10)
+		->get();
+
+	return view('index', compact('trendingBooks'));
 })->name('index');

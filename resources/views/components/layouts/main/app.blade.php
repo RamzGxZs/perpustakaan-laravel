@@ -10,13 +10,14 @@
   <style>
     body {
       font-family: "Nunito Sans", sans-serif;
+			/* scroll-behavior: smooth; */
       /* background-color; */
       /* color: #f8fafc; */
     }
   </style>
 </head>
 
-<body class="w-full bg-gray-50 ">
+<body class="w-full bg-gray-50">
 
   <div class="bg-white w-full sticky top-0 z-50">
     <x-layouts.main.navbar />
