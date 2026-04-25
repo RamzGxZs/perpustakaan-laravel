@@ -53,14 +53,41 @@
 	</div>
 
     <div class="hidden md:flex items-center gap-4">
-      <a href="/auth/register"
-        class="px-5 py-2 border-2 transition-all duration-300 border-blue-700 text-blue-700 rounded-lg hover:border-transparent hover:bg-blue-800 hover:text-white font-semibold">
-        Sign up
-      </a>
-      <a href="/auth/login"
-        class="px-5 py-2 border-2 border-transparent transition-all duration-300 rounded-lg bg-blue-700 hover:bg-blue-800 font-semibold text-white shadow-md hover:shadow-lg">
-        Login
-      </a>
+      @guest
+        <a href="/auth/register"
+          class="px-5 py-2 border-2 transition-all duration-300 border-blue-700 text-blue-700 rounded-lg hover:border-transparent hover:bg-blue-800 hover:text-white font-semibold">
+          Sign up
+        </a>
+        <a href="/auth/login"
+          class="px-5 py-2 border-2 border-transparent transition-all duration-300 rounded-lg bg-blue-700 hover:bg-blue-800 font-semibold text-white shadow-md hover:shadow-lg">
+          Login
+        </a>
+      @endguest
+
+      @auth
+        <div class="relative">
+          <button id="user-menu-btn" class="flex items-center gap-3 p-1.5 rounded-lg hover:bg-gray-100 transition-colors duration-200">
+            <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->email) }}&background=1D4ED8&color=fff" alt="Avatar" class="w-9 h-9 rounded-full border border-gray-200">
+            <div class="flex flex-col text-left leading-tight">
+              <span class="text-sm font-bold text-gray-900 truncate max-w-[120px]">{{ auth()->user()->email }}</span>
+              <span class="text-xs text-gray-500 capitalize">{{ auth()->user()->role }}</span>
+            </div>
+            <i class="fa-solid fa-chevron-down text-xs text-gray-400 ml-1"></i>
+          </button>
+          
+          <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 hidden z-50">
+            @if(auth()->user()->role === 'admin')
+              <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Dashboard</a>
+            @endif
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Profile</a>
+            <div class="border-t border-gray-100 my-1"></div>
+            <form action="{{ route('logout') }}" method="POST">
+              @csrf
+              <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50">Logout</button>
+            </form>
+          </div>
+        </div>
+      @endauth
     </div>
 
     <div class="md:hidden flex items-center">
@@ -81,19 +108,47 @@
       <a href="#about" class="text-gray-600 font-medium hover:text-blue-700">About</a>
 
       <div class="flex flex-col gap-3 mt-4 pt-4 border-t border-gray-100">
-        <a href="/auth/login"
-          class="w-full text-center px-5 py-2 rounded-lg bg-blue-700 font-semibold text-white shadow-md">
-          Login
-        </a>
-        <a href="/auth/register"
-          class="w-full text-center px-5 py-2 border-2 border-blue-700 text-blue-700 rounded-lg font-semibold">
-          Sign up
-        </a>
+        @guest
+          <a href="/auth/login"
+            class="w-full text-center px-5 py-2 rounded-lg bg-blue-700 font-semibold text-white shadow-md">
+            Login
+          </a>
+          <a href="/auth/register"
+            class="w-full text-center px-5 py-2 border-2 border-blue-700 text-blue-700 rounded-lg font-semibold">
+            Sign up
+          </a>
+        @endguest
+        @auth
+          <div class="flex items-center gap-3 px-2 mb-2">
+            <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->email) }}&background=1D4ED8&color=fff" alt="Avatar" class="w-10 h-10 rounded-full border border-gray-200">
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-gray-900 truncate">{{ auth()->user()->email }}</span>
+              <span class="text-xs text-gray-500 capitalize">{{ auth()->user()->role }}</span>
+            </div>
+          </div>
+          @if(auth()->user()->role === 'admin')
+            <a href="/dashboard" class="w-full text-center px-5 py-2 rounded-lg bg-blue-700 font-semibold text-white shadow-md">Dashboard</a>
+          @endif
+          <form action="{{ route('logout') }}" method="POST" class="w-full">
+            @csrf
+            <button type="submit" class="w-full text-center px-5 py-2 border-2 border-red-600 text-red-600 rounded-lg font-semibold">Logout</button>
+          </form>
+        @endauth
       </div>
     </div>
   </div>
 </nav>
 <script>
+  const userMenuBtn = document.getElementById('user-menu-btn');
+  const userMenu = document.getElementById('user-menu');
+
+  if (userMenuBtn) {
+    userMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      userMenu.classList.toggle('hidden');
+    });
+    document.addEventListener('click', () => userMenu.classList.add('hidden'));
+  }
 
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');

@@ -70,11 +70,9 @@
 
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
 
-
       @foreach ($trendingBooks as $book)
-				<x-ui.card title="{{ $book->title }}" author="{{ $book->author }}" book_image="{{ $book->book_image }}"/>
+				<x-ui.card title="{{ $book->title }}" author="{{ $book->author }}" book_image="{{ $book->book_image }}" descriptions="{{ $book->descriptions }}"/>
 			@endforeach
-
 
     </div>
   </section>

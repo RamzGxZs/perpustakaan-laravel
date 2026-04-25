@@ -21,7 +21,7 @@ class BookFactory extends Factory
 		return [
 			'title' => $title,
 			'author' => fake()->name(),
-			'descriptions' => fake()->paragraph(4),
+			'descriptions' => fake()->paragraph(30),
 			'pages' => fake()->numberBetween(100, 500),
 			'book_image' => 'https://placehold.co/300x400/2563eb/ffffff?text=' . urlencode($title),
 			'book_readed' => fake()->numberBetween(100, 1000000)
