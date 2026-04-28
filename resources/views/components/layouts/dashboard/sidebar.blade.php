@@ -15,26 +15,26 @@
 
     <p class="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Main Menu</p>
 
-    <a href="#"
-      class="flex items-center gap-3 px-3 py-2.5 bg-[#1B2431] text-white rounded-lg group transition-colors duration-200">
-      <i class="fa-solid fa-house text-[#4880FF] w-5 text-center"></i>
+    <a href="{{ route('dashboard') }}"
+      class="flex items-center gap-3 px-3 py-2.5 rounded-lg group transition-colors duration-200 {{ request()->routeIs('dashboard') ? 'bg-[#1B2431] text-white' : 'text-gray-300 hover:bg-[#1B2431] hover:text-white' }}">
+      <i class="fa-solid fa-house w-5 text-center transition-colors {{ request()->routeIs('dashboard') ? 'text-[#4880FF]' : 'group-hover:text-[#4880FF]' }}"></i>
       <span class="font-medium">Dashboard</span>
     </a>
 
-    <a href="#"
-      class="flex items-center gap-3 px-3 py-2.5 text-gray-300 hover:bg-[#1B2431] hover:text-white rounded-lg transition-colors duration-200 group">
-      <i class="fa-solid fa-book w-5 text-center group-hover:text-[#4880FF] transition-colors"></i>
+    <a href="{{ route('dashboard.catalog') }}"
+      class="flex items-center gap-3 px-3 py-2.5 rounded-lg group transition-colors duration-200 {{ request()->routeIs('dashboard.catalog') ? 'bg-[#1B2431] text-white' : 'text-gray-300 hover:bg-[#1B2431] hover:text-white' }}">
+      <i class="fa-solid fa-book w-5 text-center transition-colors {{ request()->routeIs('dashboard.catalog') ? 'text-[#4880FF]' : 'group-hover:text-[#4880FF]' }}"></i>
       <span class="font-medium">Catalog</span>
     </a>
 
-    <a href="#"
-      class="flex items-center gap-3 px-3 py-2.5 text-gray-300 hover:bg-[#1B2431] hover:text-white rounded-lg transition-colors duration-200 group">
-      <i class="fa-solid fa-layer-group w-5 text-center group-hover:text-[#4880FF] transition-colors"></i>
+    <a href="{{ route('dashboard.inventory') }}"
+      class="flex items-center gap-3 px-3 py-2.5 rounded-lg group transition-colors duration-200 {{ request()->routeIs('dashboard.inventory') ? 'bg-[#1B2431] text-white' : 'text-gray-300 hover:bg-[#1B2431] hover:text-white' }}">
+      <i class="fa-solid fa-layer-group w-5 text-center transition-colors {{ request()->routeIs('dashboard.inventory') ? 'text-[#4880FF]' : 'group-hover:text-[#4880FF]' }}"></i>
       <span class="font-medium">Inventories</span>
     </a>
 
-    <a href="#"
-      class="flex items-center gap-3 px-3 py-2.5 text-gray-300 hover:bg-[#1B2431] hover:text-white rounded-lg transition-colors duration-200 group">
+    <a href="{{ route('dashboard.user-management') }}"
+      class="flex items-center gap-3 px-3 py-2.5 rounded-lg group transition-colors duration-200 {{ request()->routeIs('dashboard.user-management') ? 'bg-[#1B2431] text-white' : 'text-gray-300 hover:bg-[#1B2431] hover:text-white' }}">
       <i class="fa-solid fa-users w-5 text-center group-hover:text-[#4880FF] transition-colors"></i>
       <span class="font-medium">Users Management</span>
     </a>

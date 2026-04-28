@@ -30,9 +30,23 @@ Route::prefix('auth')->middleware('guest')->group(function () {
 // views route
 Route::middleware(['auth'])->group(function () {
 
-	Route::get('/dashboard', function () {
-		return view('dashboard');
-	})->name('dashboard');
+	Route::prefix('dashboard')->group(function () {
+		Route::get('/', function () {
+			return view('dashboard.index');
+		})->name('dashboard');
+
+		Route::get('inventory', function () {
+			return view('dashboard.inventory');
+		})->name('dashboard.inventory');
+
+		Route::get('catalog', function () {
+			return view('dashboard.catalog');
+		})->name('dashboard.catalog');
+
+		Route::get('user-management', function () {
+			return view('dashboard.user-management');
+		})->name('dashboard.user-management');
+	});
 
 	Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

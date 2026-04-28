@@ -74,7 +74,7 @@
             </div>
             <i class="fa-solid fa-chevron-down text-xs text-gray-400 ml-1"></i>
           </button>
-          
+
           <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 hidden z-50">
             @if(auth()->user()->role === 'admin')
               <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Dashboard</a>
