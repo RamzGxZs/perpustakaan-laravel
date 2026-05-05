@@ -2,6 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InventoriesController;
 use App\Models\Book;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Route;
@@ -31,17 +34,12 @@ Route::prefix('auth')->middleware('guest')->group(function () {
 Route::middleware(['auth'])->group(function () {
 
 	Route::prefix('dashboard')->group(function () {
-		Route::get('/', function () {
-			return view('dashboard.index');
-		})->name('dashboard');
 
-		Route::get('inventory', function () {
-			return view('dashboard.inventory');
-		})->name('dashboard.inventory');
+		Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-		Route::get('catalog', function () {
-			return view('dashboard.catalog');
-		})->name('dashboard.catalog');
+		Route::get('inventory', [InventoriesController::class, 'index'])->name('dashboard.inventory');
+
+		Route::get('catalog', [CatalogController::class, 'index'])->name('dashboard.catalog');
 
 		Route::get('user-management', function () {
 			return view('dashboard.user-management');
