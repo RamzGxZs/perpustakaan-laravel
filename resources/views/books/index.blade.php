@@ -78,7 +78,7 @@
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
       @foreach ($books as $book)
         <x-ui.card title="{{ $book->title }}" author="{{ $book->author }}" book_image="{{ $book->book_image }}"
-          desc="{{ $book->descriptions }}" />
+          descriptions="{{ $book->descriptions }}" />
       @endforeach
     </div>
 

@@ -1,7 +1,7 @@
 @props(['title', 'author', 'book_image', 'descriptions'])
 
 <a href="#"
-  class="group block border-2 border-gray-100 rounded-xl p-4 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300">
+  class="group block border-2 border-gray-200 shadow-xl rounded-xl p-4 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300">
 
   <div class="relative w-full aspect-[3/4] rounded-xl overflow-hidden">
 

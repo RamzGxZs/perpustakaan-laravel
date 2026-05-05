@@ -52,7 +52,18 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::get('/books', [BookController::class, 'index']);
+
+
+Route::prefix('books')->group(function () {
+	Route::get('/', [BookController::class, 'index']);
+});
+
+Route::prefix('reads')->group(function () {
+	Route::get('/', function () {
+		return view('reads.index');
+	});
+});
+
 
 Route::get('/about', function () {
 	return view('about');
